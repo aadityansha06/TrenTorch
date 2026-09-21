@@ -30,7 +30,7 @@
 		'Learn the theory behind each concept',
 		'Follow step-by-step implementation examples',
 		'Solve coding challenges based on what you just learned',
-		'Implement everything from scratch, from foundational ML to inference and kernels',
+		'Implement everything from scratch, from foundational ML to inference and CUDA kernels',
 		'Practice in a Codeforces-style environment with instant grading',
 		'Take on a new Problem of the Day, with ratings'
 	];
@@ -78,9 +78,9 @@
 			Don't memorize ML. Understand it from first principles.
 		</p>
 		<p class="mb-3 max-w-2xl text-lg text-muted-foreground">
-			Write every algorithm from scratch, from linear regression, neural networks, RL and inference
-			to kernels, and see exactly what your code does at every step.
-			{totalQuestions}+ problems with theory and practical explanation.
+			Rebuild everything from scratch, from linear regression, neural networks, RL and
+			inference to CUDA kernels, and see exactly what your code does at every step.
+			{totalQuestions}+ problems, graded instantly, right in your browser.
 		</p>
 		<p class="mb-8 font-mono text-sm text-muted-foreground">
 			Free. No subscriptions. Powered by sponsors and donations.
@@ -116,9 +116,7 @@
 	<section class="container px-4 pb-16 text-center md:px-6">
 		<h2 class="display mb-6 text-3xl text-balance sm:text-4xl">
 			Learners signing up from
-			<span
-				class="mt-2 block font-mono text-base font-normal tracking-normal text-muted-foreground sm:text-lg"
-			>
+			<span class="mt-2 block font-mono text-base font-normal tracking-normal text-muted-foreground sm:text-lg">
 				top companies and campuses
 			</span>
 		</h2>
@@ -154,7 +152,9 @@
 	<!-- What you'll do -->
 	<section class="container px-4 pb-16 md:px-6">
 		<div class="mx-auto max-w-3xl">
-			<h2 class="mb-2 text-center text-2xl font-semibold sm:text-3xl">Don't just watch. Build.</h2>
+			<h2 class="mb-2 text-center text-2xl font-semibold sm:text-3xl">
+				Don't just watch. Build.
+			</h2>
 			<p class="mb-8 text-center text-muted-foreground">
 				Lectures and theory only get you so far. On TrenTorch you write the code yourself.
 			</p>
@@ -164,8 +164,8 @@
 				{/each}
 			</ul>
 			<p class="mt-8 text-center text-lg font-medium text-balance">
-				The goal isn't just to teach you how to write the code. It's to help you understand what
-				your code is actually doing underneath.
+				The goal isn't just to teach you how to write the code. It's to help you understand
+				what your code is actually doing underneath.
 			</p>
 		</div>
 	</section>
@@ -194,13 +194,13 @@
 				Money shouldn't be the barrier to learning ML.
 			</p>
 			<p class="mb-3 text-muted-foreground">
-				Advanced ML and inference education is often locked behind expensive monthly subscriptions.
-				TrenTorch is a free alternative built for students.
+				Advanced ML, inference and CUDA education is often locked behind expensive monthly
+				subscriptions. TrenTorch is a free alternative built for students.
 			</p>
 			<p class="mb-6 text-muted-foreground">
-				We don't charge users and we don't sell your data. TrenTorch runs entirely on sponsorships
-				and donations. If it helps you, consider supporting it so it stays free for the next
-				learner.
+				We don't charge users and we don't sell your data. TrenTorch runs entirely on
+				sponsorships and donations. If it helps you, consider supporting it so it stays free
+				for the next learner.
 			</p>
 			{#if SUPPORT_URL}
 				<Button href={SUPPORT_URL} target="_blank" rel="noopener noreferrer">
