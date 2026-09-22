@@ -5,11 +5,17 @@
 	import StatTile from '$components/StatTile.svelte';
 	import HowItWorks from '$components/HowItWorks.svelte';
 	import Testimonials from '$components/Testimonials.svelte';
-	import { BookOpen, Heart } from '@lucide/svelte';
 	import Github from '$components/GithubIcon.svelte';
 	import { curriculum, getProgressStats } from '$data/questions';
 	import { gateBehindSignIn } from '$processes/auth/gate-behind-sign-in';
+    import { browser } from '$app/environment';
+import { BookOpen, Heart, CalendarCheck, ArrowRight } from '@lucide/svelte';
+import DifficultyBadge from '$components/DifficultyBadge.svelte';
+import { getTodaysPotd } from '$processes/potd/get-todays-potd';
+import type { PageProps } from './$types';
 
+let { data }: PageProps = $props();
+const todaysProblem = $derived(browser ? getTodaysPotd(data.potdSummaries) : undefined);
 	const GITHUB_URL = 'https://github.com/TrenTorch/TrenTorch';
 
 	// Paste your GitHub Sponsors / Ko-fi / Open Collective link here.
@@ -22,7 +28,7 @@
 	// Organisations seen in signup email domains (aggregate only, no individuals).
 	// Institutions are kept general (IITs, NITs, VIT) rather than naming one campus.
 	// Keep in sync with the DB. The matching disclaimer lives in Footer.svelte.
-	const LEARNER_ORGS = ['xAI', 'Uber', 'BITS Hyderabad', 'IITs', 'NITs', 'VIT', 'and more'];
+	const LEARNER_ORGS = ['xAI', 'Uber','BITS Pilani', 'BITS Hyderabad', 'IITs', 'NITs', 'VIT', 'and more'];
 	// Duplicated once so the marquee loops seamlessly.
 	const MARQUEE_ITEMS = [...LEARNER_ORGS, ...LEARNER_ORGS];
 
@@ -65,22 +71,38 @@
 </svelte:head>
 
 <div>
-	<!-- Hero -->
+
+<!--POTD--->
+{#if todaysProblem}
+<a
+                href={resolve('/ide/[id]', { id: todaysProblem.question.slug })}
+                class="mx-auto mt-8 mb-6 flex w-fit items-center gap-3 rounded-full border border-border bg-secondary/50 px-4 py-2 font-mono text-xs transition-colors hover:border-foreground/30 hover:bg-secondary"
+            >
+                <CalendarCheck class="size-3.5 text-primary" />
+                <span class="text-muted-foreground">Today's Problem:</span>
+                <span class="font-semibold">{todaysProblem.question.title}</span>
+                <DifficultyBadge difficulty={todaysProblem.question.difficulty} />
+                <ArrowRight class="size-3.5" />
+            </a>
+{/if}
+<!-- Hero -->
 	<section class="container flex flex-col items-center px-4 pt-24 pb-16 text-center md:px-6">
-		<LogoBadge class="mb-8 size-36" />
+		
+        <LogoBadge class="mb-8 size-36" />
+
+	
 		<h1
 			class="glitch-heading mb-4 font-mono text-4xl font-bold tracking-[0.02em] sm:text-6xl"
 			data-text="TrenTorch"
 		>
 			TrenTorch
-		</h1>
-		<p class="display mb-4 max-w-3xl text-3xl text-balance sm:text-5xl">
+		</h1>		<p class="display mb-4 max-w-3xl text-3xl text-balance sm:text-5xl">
 			Don't memorize ML. Understand it from first principles.
 		</p>
 		<p class="mb-3 max-w-2xl text-lg text-muted-foreground">
-			Rebuild everything from scratch, from linear regression, neural networks, RL and
-			inference to CUDA kernels, and see exactly what your code does at every step.
-			{totalQuestions}+ problems, graded instantly, right in your browser.
+			Write every algorithm from scratch, from linear regression, neural networks, RL and inference
+			to kernels, and see exactly what your code does at every step.
+			{totalQuestions}+ problems with theory and practical explanation.
 		</p>
 		<p class="mb-8 font-mono text-sm text-muted-foreground">
 			Free. No subscriptions. Powered by sponsors and donations.
