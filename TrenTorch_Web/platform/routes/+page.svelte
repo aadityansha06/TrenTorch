@@ -52,7 +52,7 @@
 		<div class="flex flex-wrap items-center justify-center gap-3">
 			<Button size="lg" href={resolve('/questions')} onclick={gateBehindSignIn}>
 				<BookOpen class="size-4" />
-				Questions
+				Module
 			</Button>
 			<Button
 				size="lg"
