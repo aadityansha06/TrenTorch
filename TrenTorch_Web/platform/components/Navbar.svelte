@@ -17,13 +17,8 @@
 	// pages themselves stay public, so the hrefs are still plain links.
 	const routes = [
 		{ href: resolve('/'), label: 'Home', gated: false },
-		{ href: resolve('/questions'), label: 'Questions', gated: true },
-		{
-			href: resolve('/potd'),
-			label: 'Problem of the day',
-			pill: 'new' as const,
-			gated: true
-		}
+		{ href: resolve('/questions'), label: 'Module', gated: true },
+		{ href: resolve('/papers'), label: 'Research paper', gated: false }
 		// "Roadmap" doesn't have a page yet -- listed here, unlinked, so
 		// what's coming is visible without shipping a dead route.
 	];
